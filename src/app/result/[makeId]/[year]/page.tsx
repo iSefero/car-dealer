@@ -7,8 +7,8 @@ import axios from "axios";
 // common
 import ResultView from "@/views/result";
 import { PageLoading } from "@/components/Loaders";
-import { fetchYears } from "@/utils/helpers";
-import { fetchMakes } from "@/app/calls";
+// import { fetchYears } from "@/utils/helpers";
+// import { fetchMakes } from "@/app/calls";
 
 // ==============================
 // Possible issue: Maximum call stack size exceeded
@@ -38,7 +38,7 @@ async function fetchModels(makeId: string, year: string) {
 export default async function ResultPage({
   params,
 }: {
-  params: { makeId: string; year: string };
+  params: Promise<{ makeId: string; year: string }>;
 }) {
   const { makeId, year } = await params;
   const models = await fetchModels(makeId, year);
